@@ -1,8 +1,10 @@
-package leafenterprise.leafcollector.br;
+package leafenterprise.leafcollector.br.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import leafenterprise.leafcollector.br.R;
 
 public class MainActivity extends AppCompatActivity {
 
