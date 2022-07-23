@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Leaf Collector</string>
+    <string name="login_phrase">Conecte-se para acessar seus Leafs</string>
+
+    <string name="app_slogan">Seja Sustentável\nTroque Sacolas :)</string>
+    <string name="shops">Lojas</string>
+    <string name="cart_items">Itens do Carrinho</string>
+
+    <string name="exchange_bags">Trocar Sacolas</string>
+    <string name="confirm">Confirmar</string>
+    <string name="adresses">Endereços</string>
+    <string name="add_adresse">Adicionar Endereço</string>
+    <string name="cancel">Cancelar</string>
+    <string name="put_in_cart">Colocar no Carrinho</string>
+
+    <string name="buy_proof">Comprovante de Compra</string>
+    <string name="change_proof">Comprovante de Troca</string>
+    <string name="user">Usuário</string>
+    <string name="enterpraise">Empresa</string>
+    <string name="info_proof">Este comprovante é apenas uma simulação criada para um projeto de processo seletivo.</string>
+    <string name="change_success">Troca Efetuada</string>
+
+    <string name="approach_qrcode">Aproxime o QRCODE</string>
 </resources>
