@@ -14,7 +14,40 @@
         android:theme="@style/Theme.LeafCollector"
         tools:targetApi="31">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.ProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.LeafReaderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.BuyProofActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ChangeSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ChangeProofActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ShopActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.AdressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.UserInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SplashScreen"
+            android:exported="false" />
+        <activity
+            android:name=".ui.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
