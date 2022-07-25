@@ -4,6 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/off_white"
     tools:context=".ui.ChangeSuccessActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/changesuccess_cv"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:backgroundTint="@color/green_primary"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_gravity="center"
+            android:text="@string/change_success"
+            android:textColor="@color/off_white"
+            android:textStyle="bold"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/changesuccess_txt_datetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/changesuccess_cv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="48dp"
+        tools:text="12 SET 2022, 15:30"
+        android:textStyle="bold"
+        android:textColor="@color/gray"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/changesuccess_txt_bag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/changesuccess_txt_datetime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        tools:text="SACOLA 20X15CM"
+        android:textStyle="bold"
+        android:textColor="@color/green_secundary"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/changesuccess_txt_enterpraise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/changesuccess_txt_bag"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="NILZA SUPERMERCADO"
+        android:textStyle="bold"
+        android:textColor="@color/green_secundary"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/changesuccess_txt_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/changesuccess_txt_enterpraise"
+        app:layout_constraintEnd_toStartOf="@+id/changesuccess_img_leaf"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/plus"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:textColor="@color/green_secundary"
+        />
+
+    <ImageView
+        android:id="@+id/changesuccess_img_leaf"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        app:layout_constraintEnd_toStartOf="@+id/changesuccess_txt_leaf"
+        app:layout_constraintTop_toTopOf="@+id/changesuccess_txt_leaf"
+        android:src="@drawable/ic_leaf"
+        android:contentDescription="@string/proof" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/changesuccess_txt_leaf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/changesuccess_txt_enterpraise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="80"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:textColor="@color/green_secundary"
+        />
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/changesuccess_txt_proof"
+        android:src="@drawable/ic_proof"
+        android:contentDescription="@string/proof" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/changesuccess_txt_proof"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/proof"
+        android:textStyle="bold"
+        android:layout_marginBottom="36sp"
+        android:textColor="@color/green_secundary"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

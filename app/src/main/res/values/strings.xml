@@ -26,4 +26,6 @@
     <string name="password">Senha</string>
     <string name="forgot_password">Esqueci a senha</string>
     <string name="sign_in">Cadastrar</string>
+    <string name="proof">Comprovante</string>
+    <string name="plus">+</string>
 </resources>
