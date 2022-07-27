@@ -29,4 +29,12 @@
     <string name="proof">Comprovante</string>
     <string name="plus">+</string>
     <string name="hello">Olá,</string>
+    <string name="unit">Unidade</string>
+    <string name="circle_text">•</string>
+    <string name="image_of_product">Imagem do produto</string>
+    <string name="remove_item_from_cart">Remover item do carrinho</string>
+    <string name="leaf_coin">LFS</string>
+    <string name="inform_for_user">Informar ao usuário detalhes do app</string>
+    <string name="open_cart">Abrir carrinho</string>
+    <string name="coin_app">Moeda do app</string>
 </resources>

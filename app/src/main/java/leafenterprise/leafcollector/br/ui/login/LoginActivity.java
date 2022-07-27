@@ -7,7 +7,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import leafenterprise.leafcollector.br.databinding.ActivityLoginBinding;
-import leafenterprise.leafcollector.br.ui.HomeActivity;
+import leafenterprise.leafcollector.br.ui.home.view.HomeActivity;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -15,24 +15,25 @@
         app:cardCornerRadius="5000dp">
 
         <ImageView
-            android:id="@+id/home_rvitem_imgshop"
+            android:id="@+id/rvitem_imgshop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@mipmap/ic_launcher_round"/>
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/home_rvitem_shop"
+        android:id="@+id/rvitem_shop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/shops"
+        android:textColor="@color/green_secundary"
         android:gravity="center"
         android:maxLines="2"
         android:textStyle="bold"
         android:textSize="14sp"/>
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/home_rvitem_category"
+        android:id="@+id/rvitem_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/shops"
