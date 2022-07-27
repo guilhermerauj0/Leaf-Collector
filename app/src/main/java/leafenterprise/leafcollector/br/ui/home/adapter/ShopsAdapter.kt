@@ -1,13 +1,11 @@
-package leafenterprise.leafcollector.br.ui.adapter
+package leafenterprise.leafcollector.br.ui.home.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import leafenterprise.leafcollector.br.databinding.HomeRvShopsItemBinding
 import leafenterprise.leafcollector.br.domain.Shop
-import leafenterprise.leafcollector.br.ui.ShopActivity
 
 class ShopsAdapter(
     private val context: Context,

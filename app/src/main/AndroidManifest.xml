@@ -62,7 +62,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.HomeActivity"
+            android:name=".ui.home.view.HomeActivity"
             android:exported="false" />
     </application>
 

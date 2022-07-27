@@ -1,4 +1,4 @@
-package leafenterprise.leafcollector.br.ui;
+package leafenterprise.leafcollector.br.ui.home.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,10 @@ import java.util.List;
 
 import leafenterprise.leafcollector.br.databinding.ActivityHomeBinding;
 import leafenterprise.leafcollector.br.domain.Shop;
-import leafenterprise.leafcollector.br.ui.adapter.ShopsAdapter;
+import leafenterprise.leafcollector.br.ui.CartActivity;
+import leafenterprise.leafcollector.br.ui.QrCodeActivity;
+import leafenterprise.leafcollector.br.ui.UserInfoActivity;
+import leafenterprise.leafcollector.br.ui.home.adapter.ShopsAdapter;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -27,6 +30,8 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // TODO "Implementar os recyclerviews presentes"
+
         setupShopList();
         createShops();
 
@@ -38,9 +43,29 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        // INFO BUTTON
+        binding.homeImgInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                inform();
+            }
+        });
 
-        // TODO "Implementar os recyclerviews presentes"
-        // TODO "Implementar os botões"
+        // ABRIR CARRINHO
+        binding.homeImgCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openCart();
+            }
+        });
+
+        // ABRIR TELA DE USUARIO
+        binding.homeImgUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openUser();
+            }
+        });
     }
 
     private void setupShopList() {
@@ -73,4 +98,20 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), QrCodeActivity.class);
         startActivity(intent);
     }
+
+    private void inform() {
+        // TODO "Implementar Alert dialog"
+    }
+
+    private void openCart() {
+        Intent intent = new Intent(this, CartActivity.class);
+        startActivity(intent);
+    }
+
+
+    private void openUser() {
+        Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
+        startActivity(intent);
+    }
+
 }
