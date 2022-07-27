@@ -17,8 +17,8 @@ class ShopsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.homeRvitemShop.text = listShops[position].name
-        holder.binding.homeRvitemCategory.text = listShops[position].category
+        holder.binding.rvitemShop.text = listShops[position].name
+        holder.binding.rvitemCategory.text = listShops[position].category
     }
 
     override fun getItemCount(): Int {

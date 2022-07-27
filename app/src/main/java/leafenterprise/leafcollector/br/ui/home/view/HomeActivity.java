@@ -12,17 +12,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import leafenterprise.leafcollector.br.databinding.ActivityHomeBinding;
+import leafenterprise.leafcollector.br.domain.CartItem;
 import leafenterprise.leafcollector.br.domain.Shop;
 import leafenterprise.leafcollector.br.ui.CartActivity;
 import leafenterprise.leafcollector.br.ui.QrCodeActivity;
 import leafenterprise.leafcollector.br.ui.UserInfoActivity;
+import leafenterprise.leafcollector.br.ui.home.adapter.CartItemsAdapter;
 import leafenterprise.leafcollector.br.ui.home.adapter.ShopsAdapter;
 
 public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
     private ShopsAdapter shopsAdapter;
+    private CartItemsAdapter cartItemsAdapter;
     private List<Shop> listShops;
+    private List<CartItem> listCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +34,10 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // TODO "Implementar os recyclerviews presentes"
-
         setupShopList();
+        setupCartList();
         createShops();
+        createItemsCart();
 
         // ABRIR LEITOR QRCODE
         binding.homeBtnChangebags.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +72,7 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+
     private void setupShopList() {
         listShops = new ArrayList<>();
         shopsAdapter = new ShopsAdapter(this, listShops);
@@ -77,7 +82,18 @@ public class HomeActivity extends AppCompatActivity {
         binding.homeRvShops.setAdapter(shopsAdapter);
     }
 
-    private void createShops(){
+
+    private void setupCartList() {
+        listCart = new ArrayList<>();
+        cartItemsAdapter = new CartItemsAdapter(this, listCart);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        binding.homeRvCartitems.setLayoutManager(layoutManager);
+        binding.homeRvCartitems.setHasFixedSize(true);
+        binding.homeRvCartitems.setAdapter(cartItemsAdapter);
+
+    }
+
+    private void createShops() {
         Shop shop1 = new Shop("Nilza Supermercado", "Alimentos");
         listShops.add(shop1);
         Shop shop2 = new Shop("Zé do Pé", "Calçados");
@@ -92,6 +108,15 @@ public class HomeActivity extends AppCompatActivity {
         listShops.add(shop6);
         Shop shop7 = new Shop("MH Instalações", "Elétricos");
         listShops.add(shop7);
+    }
+
+    private void createItemsCart() {
+        CartItem product1 = new CartItem("iPhone X", "Smartphone", 1, 5679, "");
+        listCart.add(product1);
+        CartItem product2 = new CartItem("Tenis Nike", "Sapato para caminhar", 3, 1401, "");
+        listCart.add(product2);
+        CartItem product3 = new CartItem("TV Smart", "Ideal para assistir", 2, 7040, "");
+        listCart.add(product3);
     }
 
     private void readQrCode() {
