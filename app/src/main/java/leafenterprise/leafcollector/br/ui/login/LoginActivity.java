@@ -1,13 +1,13 @@
-package leafenterprise.leafcollector.br.ui;
-
-import androidx.appcompat.app.AppCompatActivity;
+package leafenterprise.leafcollector.br.ui.login;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import leafenterprise.leafcollector.br.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import leafenterprise.leafcollector.br.databinding.ActivityLoginBinding;
+import leafenterprise.leafcollector.br.ui.HomeActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -17,10 +17,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
+        setContentView(binding.getRoot());
 
-        // TODO "Implementar botão de confirmar login"
         binding.loginBtnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
