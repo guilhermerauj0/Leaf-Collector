@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="leafenterprise.leafcollector.br">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LeafCollector"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.QrCodeActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.ProductActivity"
             android:exported="false" />
@@ -41,7 +50,7 @@
             android:name=".ui.CartActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".ui.SplashScreen"
@@ -54,7 +63,7 @@
         </activity>
         <activity
             android:name=".ui.HomeActivity"
-            android:exported="false"/>
+            android:exported="false" />
     </application>
 
 </manifest>

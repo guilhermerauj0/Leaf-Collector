@@ -1,11 +1,12 @@
 package leafenterprise.leafcollector.br.ui;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +30,17 @@ public class HomeActivity extends AppCompatActivity {
         setupShopList();
         createShops();
 
+        // ABRIR LEITOR QRCODE
+        binding.homeBtnChangebags.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                readQrCode();
+            }
+        });
+
+
         // TODO "Implementar os recyclerviews presentes"
         // TODO "Implementar os botões"
-        // TODO "Implementar ViewBinding"
     }
 
     private void setupShopList() {
@@ -60,4 +69,8 @@ public class HomeActivity extends AppCompatActivity {
         listShops.add(shop7);
     }
 
+    private void readQrCode() {
+        Intent intent = new Intent(getApplicationContext(), QrCodeActivity.class);
+        startActivity(intent);
+    }
 }

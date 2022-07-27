@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import leafenterprise.leafcollector.br.R
+import leafenterprise.leafcollector.br.ui.login.LoginActivity
 
 class SplashScreen : AppCompatActivity() {
 
