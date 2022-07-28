@@ -37,4 +37,11 @@
     <string name="inform_for_user">Informar ao usuário detalhes do app</string>
     <string name="open_cart">Abrir carrinho</string>
     <string name="coin_app">Moeda do app</string>
+    <string name="num">Num</string>
+    <string name="adress">Endereço</string>
+    <string name="complement">Complemento</string>
+    <string name="district">Bairro</string>
+    <string name="city">Cidade</string>
+    <string name="state">Estado</string>
+    <string name="cep">CEP</string>
 </resources>
