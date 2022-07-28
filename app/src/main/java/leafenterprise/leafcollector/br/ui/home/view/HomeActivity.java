@@ -72,7 +72,6 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-
     private void setupShopList() {
         listShops = new ArrayList<>();
         shopsAdapter = new ShopsAdapter(this, listShops);
@@ -81,7 +80,6 @@ public class HomeActivity extends AppCompatActivity {
         binding.homeRvShops.setHasFixedSize(true);
         binding.homeRvShops.setAdapter(shopsAdapter);
     }
-
 
     private void setupCartList() {
         listCart = new ArrayList<>();
@@ -132,7 +130,6 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CartActivity.class);
         startActivity(intent);
     }
-
 
     private void openUser() {
         Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
