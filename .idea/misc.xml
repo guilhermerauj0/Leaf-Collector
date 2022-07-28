@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/user/AndroidStudioProjects/Leaf-Collector/app/src/main/res/layout/activity_adress.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Leaf-Collector/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Leaf-Collector/app/src/main/res/layout/activity_user_info.xml" value="0.27291666666666664" />
         <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout-v23/activity_home.xml" value="0.33" />
         <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout/activity_change_proof.xml" value="0.37083333333333335" />
         <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout/activity_change_success.xml" value="0.33" />
@@ -16,7 +19,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
