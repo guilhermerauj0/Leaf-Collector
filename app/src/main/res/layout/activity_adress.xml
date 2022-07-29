@@ -11,7 +11,7 @@
         android:id="@+id/adress_txt_adresses"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/adress"
+        android:text="@string/adresses"
         android:gravity="center"
         android:textColor="@color/green_secundary"
         android:textStyle="bold"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         app:boxStrokeColor="@color/green_primary"
-        android:hint="@string/adress"
+        android:hint="@string/adresses"
         app:hintTextColor="@color/green_primary"
         app:layout_constraintTop_toTopOf="@+id/adress_txt_adresses"
         >
