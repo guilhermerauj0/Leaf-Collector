@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import leafenterprise.leafcollector.br.databinding.ActivityHomeBinding;
-import leafenterprise.leafcollector.br.domain.CartItem;
+import leafenterprise.leafcollector.br.domain.Product;
 import leafenterprise.leafcollector.br.domain.Shop;
 import leafenterprise.leafcollector.br.ui.CartActivity;
 import leafenterprise.leafcollector.br.ui.QrCodeActivity;
@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     private ShopsAdapter shopsAdapter;
     private CartItemsAdapter cartItemsAdapter;
     private List<Shop> listShops;
-    private List<CartItem> listCart;
+    public List<Product> listCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,11 +109,11 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void createItemsCart() {
-        CartItem product1 = new CartItem("iPhone X", "Smartphone", 1, 5679, "");
+        Product product1 = new Product("iPhone X", "Smartphone", 1, 5679, "");
         listCart.add(product1);
-        CartItem product2 = new CartItem("Tenis Nike", "Sapato para caminhar", 3, 1401, "");
+        Product product2 = new Product("Tenis Nike", "Sapato para caminhar", 3, 1401, "");
         listCart.add(product2);
-        CartItem product3 = new CartItem("TV Smart", "Ideal para assistir", 2, 7040, "");
+        Product product3 = new Product("TV Smart", "Ideal para assistir", 2, 7040, "");
         listCart.add(product3);
     }
 

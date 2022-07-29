@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import leafenterprise.leafcollector.br.databinding.RvCartitemsItemBinding
-import leafenterprise.leafcollector.br.domain.CartItem
+import leafenterprise.leafcollector.br.domain.Product
 
 class CartItemsAdapter(
     private val context: Context,
-    private val listCart: MutableList<CartItem>
+    private val listCart: MutableList<Product>
 
 ) : RecyclerView.Adapter<CartItemsAdapter.ViewHolder>() {
 

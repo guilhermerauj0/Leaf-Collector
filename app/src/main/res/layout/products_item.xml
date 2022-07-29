@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="start">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@color/green_primary" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/shopitem_txt_productname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="iPhone X"
+            android:textColor="@color/green_secundary"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:gravity="center"
+            android:maxWidth="100dp"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/shopitem_txt_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="9890"
+                android:maxWidth="100dp"
+                android:maxLines="1"
+                android:layout_marginEnd="2dp"
+                android:textSize="12sp"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/leaf_coin"
+                android:maxWidth="100dp"
+                android:maxLines="1"
+                android:textSize="12sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

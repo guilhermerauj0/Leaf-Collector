@@ -44,4 +44,5 @@
     <string name="city">Cidade</string>
     <string name="state">Estado</string>
     <string name="cep">CEP</string>
+    <string name="products">Produtos</string>
 </resources>
