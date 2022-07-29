@@ -33,33 +33,35 @@
         app:layout_constraintTop_toBottomOf="@+id/login_img_icon" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_edt_user"
+        android:id="@+id/login_tl_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:hint="@string/login"
+        android:hint="@string/email"
         app:boxStrokeColor="@color/green_primary"
         app:hintTextColor="@color/green_primary"
         app:layout_constraintTop_toBottomOf="@+id/login_txt_phrase">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_edt_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/green_primary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_edt_password"
+        android:id="@+id/login_tl_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="@string/password"
         app:hintTextColor="@color/green_primary"
-        app:layout_constraintTop_toBottomOf="@+id/login_edt_user">
+        app:layout_constraintTop_toBottomOf="@+id/login_tl_email">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_edt_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -72,17 +74,20 @@
         android:layout_marginTop="8dp"
         android:text="@string/forgot_password"
         android:textColor="@color/green_secundary"
-        app:layout_constraintStart_toStartOf="@+id/login_edt_password"
-        app:layout_constraintTop_toBottomOf="@+id/login_edt_password" />
+        app:layout_constraintStart_toStartOf="@+id/login_tl_password"
+        app:layout_constraintTop_toBottomOf="@+id/login_tl_password" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/login_txt_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/sign_in"
+        android:text="@string/register"
+        android:clickable="true"
+        android:focusable="true"
         android:textColor="@color/green_secundary"
-        app:layout_constraintEnd_toEndOf="@+id/login_edt_password"
-        app:layout_constraintTop_toBottomOf="@+id/login_edt_password" />
+        app:layout_constraintEnd_toEndOf="@+id/login_tl_password"
+        app:layout_constraintTop_toBottomOf="@+id/login_tl_password" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/login_btn_confirm"
