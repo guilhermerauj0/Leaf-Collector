@@ -43,7 +43,8 @@ public class HomeActivity extends AppCompatActivity {
         binding.homeBtnChangebags.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                readQrCode();
+                throw new RuntimeException("Test Crash");
+                //readQrCode();
             }
         });
 

@@ -45,4 +45,9 @@
     <string name="state">Estado</string>
     <string name="cep">CEP</string>
     <string name="products">Produtos</string>
+    <string name="name">Nome</string>
+    <string name="email">E-mail</string>
+    <string name="cpf">CPF</string>
+    <string name="phone">Telefone</string>
+    <string name="add_adress">Adicionar endereço</string>
 </resources>

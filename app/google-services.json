@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "894752106197",
+    "project_id": "leaf-collector-app",
+    "storage_bucket": "leaf-collector-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894752106197:android:8b200f109fb6e86f50e45c",
+        "android_client_info": {
+          "package_name": "leafenterprise.leafcollector.br"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "894752106197-fq0akn1o62aj4ihjup73qkju5560863i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKry-39AKG88LARqWvN5eog5qgPXOGG_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "894752106197-fq0akn1o62aj4ihjup73qkju5560863i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
