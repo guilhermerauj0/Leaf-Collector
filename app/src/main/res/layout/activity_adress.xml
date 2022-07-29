@@ -7,16 +7,28 @@
     android:layout_height="match_parent"
     tools:context=".ui.AdressActivity">
 
+    <TextView
+        android:id="@+id/adress_txt_adresses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/adress"
+        android:gravity="center"
+        android:textColor="@color/green_secundary"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/adress_edt_adress"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="36dp"
         app:boxStrokeColor="@color/green_primary"
         android:hint="@string/adress"
         app:hintTextColor="@color/green_primary"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/adress_txt_adresses"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
