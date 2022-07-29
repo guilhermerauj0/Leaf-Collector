@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,7 @@ import leafenterprise.leafcollector.br.ui.QrCodeActivity;
 import leafenterprise.leafcollector.br.ui.UserInfoActivity;
 import leafenterprise.leafcollector.br.ui.home.adapter.CartItemsAdapter;
 import leafenterprise.leafcollector.br.ui.home.adapter.ShopsAdapter;
+import leafenterprise.leafcollector.br.ui.login.LoginActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -27,6 +30,7 @@ public class HomeActivity extends AppCompatActivity {
     private CartItemsAdapter cartItemsAdapter;
     private List<Shop> listShops;
     public List<Product> listCart;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,7 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        mAuth = FirebaseAuth.getInstance();
         setupShopList();
         setupCartList();
         createShops();
@@ -43,8 +48,7 @@ public class HomeActivity extends AppCompatActivity {
         binding.homeBtnChangebags.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                throw new RuntimeException("Test Crash");
-                //readQrCode();
+                readQrCode();
             }
         });
 
@@ -69,6 +73,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openUser();
+            }
+        });
+
+        binding.homeTxtSignout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signOutAccount();
             }
         });
     }
@@ -135,6 +146,12 @@ public class HomeActivity extends AppCompatActivity {
     private void openUser() {
         Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
         startActivity(intent);
+    }
+
+    private void signOutAccount() {
+        mAuth.signOut();
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        finish();
     }
 
 }

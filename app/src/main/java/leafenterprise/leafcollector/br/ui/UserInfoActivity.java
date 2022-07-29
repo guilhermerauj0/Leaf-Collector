@@ -3,6 +3,7 @@ package leafenterprise.leafcollector.br.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
 import leafenterprise.leafcollector.br.databinding.ActivityUserInfoBinding;
 
 public class UserInfoActivity extends AppCompatActivity {
@@ -14,4 +15,6 @@ public class UserInfoActivity extends AppCompatActivity {
         binding = ActivityUserInfoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
+
+
 }

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Leaf Collector</string>
     <string name="login_phrase">Conecte-se para acessar\nseus Leafs</string>
 
@@ -25,7 +25,7 @@
     <string name="login">Login</string>
     <string name="password">Senha</string>
     <string name="forgot_password">Esqueci a senha</string>
-    <string name="sign_in">Cadastrar</string>
+    <string name="register">Cadastrar</string>
     <string name="proof">Comprovante</string>
     <string name="plus">+</string>
     <string name="hello">Olá,</string>
@@ -50,4 +50,6 @@
     <string name="cpf">CPF</string>
     <string name="phone">Telefone</string>
     <string name="add_adress">Adicionar endereço</string>
+    <string name="register_user">Registrar usuário</string>
+    <string name="get_out" tools:ignore="ExtraTranslation">Sair</string>
 </resources>
