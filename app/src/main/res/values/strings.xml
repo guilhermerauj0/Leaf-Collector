@@ -17,7 +17,7 @@
     <string name="change_proof">Comprovante de Troca</string>
     <string name="user">Usuário</string>
     <string name="enterpraise">Empresa</string>
-    <string name="info_proof">Este comprovante é apenas\numa simulação criada para um\nprojeto de processo seletivo.</string>
+    <string name="info_proof">Este comprovante é apenas uma simulação criada para um projeto de processo seletivo.</string>
     <string name="change_success">Troca Efetuada</string>
 
     <string name="approach_qrcode">Aproxime o QRCODE</string>
@@ -37,12 +37,4 @@
     <string name="inform_for_user">Informar ao usuário detalhes do app</string>
     <string name="open_cart">Abrir carrinho</string>
     <string name="coin_app">Moeda do app</string>
-    <string name="num">Num</string>
-    <string name="adress">Endereço</string>
-    <string name="complement">Complemento</string>
-    <string name="district">Bairro</string>
-    <string name="city">Cidade</string>
-    <string name="state">Estado</string>
-    <string name="cep">CEP</string>
-    <string name="products">Produtos</string>
 </resources>
