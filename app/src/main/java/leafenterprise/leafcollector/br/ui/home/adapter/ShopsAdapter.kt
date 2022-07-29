@@ -1,11 +1,13 @@
 package leafenterprise.leafcollector.br.ui.home.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import leafenterprise.leafcollector.br.databinding.HomeRvShopsItemBinding
 import leafenterprise.leafcollector.br.domain.Shop
+import leafenterprise.leafcollector.br.ui.shop.view.ShopActivity
 
 class ShopsAdapter(
     private val context: Context,
@@ -19,12 +21,20 @@ class ShopsAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.rvitemShop.text = listShops[position].name
         holder.binding.rvitemCategory.text = listShops[position].category
+
     }
 
     override fun getItemCount(): Int {
         return listShops.size
     }
 
-    inner class ViewHolder (val binding: HomeRvShopsItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder (val binding: HomeRvShopsItemBinding) : RecyclerView.ViewHolder(binding.root){
+        init {
+            binding.rvitemImgshop.setOnClickListener{
+                val intent : Intent = Intent(context, ShopActivity::class.java)
+                context.startActivity(intent)
+            }
+        }
+    }
 
 }

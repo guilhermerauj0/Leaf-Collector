@@ -38,7 +38,7 @@
             android:name=".ui.ChangeProofActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.ShopActivity"
+            android:name=".ui.shop.view.ShopActivity"
             android:exported="false" />
         <activity
             android:name=".ui.AdressActivity"
