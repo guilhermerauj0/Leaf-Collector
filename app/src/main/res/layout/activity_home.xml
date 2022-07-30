@@ -65,7 +65,7 @@
                 android:id="@+id/home_txt_signout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sair"
+                android:text="@string/get_out"
                 android:clickable="true"
                 android:focusable="true"
                 android:textColor="@color/offgray"
@@ -92,16 +92,17 @@
                     android:src="@drawable/ic_leaf"
                     app:tint="@color/off_white" />
 
-                    <TextView
-                        android:id="@+id/home_txt_leafs"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="687"
-                        android:textSize="20sp"
-                        android:textColor="@color/off_white"
-                        android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/home_txt_leafs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="@string/zero"
+                    android:textColor="@color/off_white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                </LinearLayout>
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/home_img_cart"
