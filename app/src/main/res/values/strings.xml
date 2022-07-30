@@ -53,4 +53,6 @@
     <string name="register_user">Registrar usuário</string>
     <string name="get_out" tools:ignore="ExtraTranslation">Sair</string>
     <string name="zero">0</string>
+    <string name="change_password">Alterar senha</string>
+    <string name="insert_email_for_recuperation">Insira e-mail para recuperação</string>
 </resources>
