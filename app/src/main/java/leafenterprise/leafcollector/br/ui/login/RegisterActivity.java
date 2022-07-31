@@ -23,7 +23,6 @@ import leafenterprise.leafcollector.br.domain.User;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private static final String TAG = "EmailPassword";
     private ActivityRegisterBinding binding;
     private FirebaseAuth mAuth;
 
@@ -54,8 +53,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void creatAccount() {
 
-        String email = binding.registerEdtEmail.getText().toString().trim();
-        String password = binding.registerEdtPassword.getText().toString().trim();
+        String email = binding.registerEdtEmail.getText().toString();
+        String password = binding.registerEdtPassword.getText().toString();
         String name = binding.registerEdtName.getText().toString().trim();
         String cpf = binding.registerEdtCpf.getText().toString().trim();
         String phone = binding.registerEdtPhone.getText().toString().trim();

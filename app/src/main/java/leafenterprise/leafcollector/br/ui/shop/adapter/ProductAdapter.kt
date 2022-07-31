@@ -21,8 +21,12 @@ class ProductAdapter(
         holder.binding.shopitemTxtProductname.text = listProduct[position].name
         holder.binding.shopitemTxtPrice.text = listProduct[position].price.toString()
 
-        holder.binding.shopitemTxtProductname.setOnClickListener {
-            Toast.makeText(context, "Voce clicou no ${listProduct[position].name}", Toast.LENGTH_SHORT).show()
+        holder.binding.productitemLl.setOnClickListener {
+            Toast.makeText(
+                context,
+                "Voce clicou no ${listProduct[position].name}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

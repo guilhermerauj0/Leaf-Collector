@@ -18,10 +18,10 @@ import leafenterprise.leafcollector.br.domain.Product;
 import leafenterprise.leafcollector.br.domain.Shop;
 import leafenterprise.leafcollector.br.ui.CartActivity;
 import leafenterprise.leafcollector.br.ui.QrCodeActivity;
-import leafenterprise.leafcollector.br.ui.UserInfoActivity;
 import leafenterprise.leafcollector.br.ui.home.adapter.CartItemsAdapter;
 import leafenterprise.leafcollector.br.ui.home.adapter.ShopsAdapter;
 import leafenterprise.leafcollector.br.ui.login.LoginActivity;
+import leafenterprise.leafcollector.br.ui.user.view.UserInfoActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -96,7 +96,12 @@ public class HomeActivity extends AppCompatActivity {
     private void setupCartList() {
         listCart = new ArrayList<>();
         cartItemsAdapter = new CartItemsAdapter(this, listCart);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
         binding.homeRvCartitems.setLayoutManager(layoutManager);
         binding.homeRvCartitems.setHasFixedSize(true);
         binding.homeRvCartitems.setAdapter(cartItemsAdapter);

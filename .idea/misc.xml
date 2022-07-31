@@ -4,7 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout-v23/activity_home.xml" value="0.33" />
-        <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout/activity_adress.xml" value="0.2" />
+        <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout/activity_adress.xml" value="0.33" />
         <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout/activity_buy_proof.xml" value="0.37083333333333335" />
         <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout/activity_cart.xml" value="0.37083333333333335" />
         <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout/activity_change_proof.xml" value="0.33" />
@@ -20,8 +20,9 @@
         <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout/activity_user_info.xml" value="0.37083333333333335" />
         <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout/home_rv_shops_item.xml" value="0.75" />
-        <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout/products_item.xml" value="0.1" />
-        <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout/rv_cartitems_item.xml" value="0.33425925925925926" />
+        <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout/products_item.xml" value="0.25" />
+        <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout/rv_adresses_item.xml" value="0.3697916666666667" />
+        <entry key="..\:/programacao/projetos/mobile/LeafCollector/app/src/main/res/layout/rv_cartitems_item.xml" value="0.75" />
       </map>
     </option>
   </component>

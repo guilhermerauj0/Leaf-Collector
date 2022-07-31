@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="42dp"
-    tools:context=".ui.UserInfoActivity">
+    tools:context=".ui.user.view.UserInfoActivity">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/register_txt_user"
