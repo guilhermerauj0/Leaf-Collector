@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:padding="36dp"
     android:layout_height="match_parent"
-    tools:context=".ui.AdressActivity">
+    tools:context=".ui.user.view.AdressActivity">
 
     <TextView
         android:id="@+id/adress_txt_adresses"

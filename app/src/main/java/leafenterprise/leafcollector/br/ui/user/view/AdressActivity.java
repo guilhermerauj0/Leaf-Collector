@@ -1,4 +1,4 @@
-package leafenterprise.leafcollector.br.ui;
+package leafenterprise.leafcollector.br.ui.user.view;
 
 import android.os.Bundle;
 import android.view.View;

@@ -55,9 +55,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         String email = binding.registerEdtEmail.getText().toString();
         String password = binding.registerEdtPassword.getText().toString();
-        String name = binding.registerEdtName.getText().toString().trim();
-        String cpf = binding.registerEdtCpf.getText().toString().trim();
-        String phone = binding.registerEdtPhone.getText().toString().trim();
+        String name = binding.registerEdtFirstname.getText().toString().trim();
+        String lastName = binding.registerEdtLastname.getText().toString().trim();
+        Integer cpf = Integer.parseInt(binding.registerEdtCpf.getText().toString());
+        Integer phone = Integer.parseInt(String.valueOf(binding.registerEdtPhone.getText()));
 
         if (TextUtils.isEmpty(email)) {
             binding.registerEdtEmail.setError("Email não pode ser vazio");
@@ -72,8 +73,8 @@ public class RegisterActivity extends AppCompatActivity {
             binding.registerEdtPassword.requestFocus();
 
         } else if (TextUtils.isEmpty(name)) {
-            binding.registerEdtName.setError("Nome não pode ser vazio");
-            binding.registerEdtName.requestFocus();
+            binding.registerEdtFirstname.setError("Nome não pode ser vazio");
+            binding.registerEdtFirstname.requestFocus();
 
         } else {
             mAuth.createUserWithEmailAndPassword(email, password)
@@ -81,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                User user = new User(name, email, cpf, phone);
+                                User user = new User(name, lastName ,email, cpf, phone, 0);
 
                                 // ADD USER TO DATABASE
                                 FirebaseDatabase.getInstance().getReference("Users")
