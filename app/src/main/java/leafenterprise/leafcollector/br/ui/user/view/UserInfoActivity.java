@@ -67,7 +67,7 @@ public class UserInfoActivity extends AppCompatActivity {
                         String userCpf = String.valueOf(dataUser.child("cpf").getValue());
                         String userPhone = String.valueOf(dataUser.child("phone").getValue());
                         String userEmail = String.valueOf(dataUser.child("email").getValue());
-                        String userLastName = String.valueOf(dataUser.child("lastname").getValue());
+                        String userLastName = String.valueOf(dataUser.child("lastName").getValue());
 
                         binding.userinfoTxtUser.setText(userName);
                         binding.userinfoEdtName.setText(userName);

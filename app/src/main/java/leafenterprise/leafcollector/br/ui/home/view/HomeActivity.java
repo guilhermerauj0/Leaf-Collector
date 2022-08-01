@@ -3,6 +3,7 @@ package leafenterprise.leafcollector.br.ui.home.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -49,7 +51,6 @@ public class HomeActivity extends AppCompatActivity {
         //TODO "Emitir alerta de usuario excluido e desloga-lo"
 
         mAuth = FirebaseAuth.getInstance();
-        setupUserInfos();
         setupShopList();
         setupCartList();
         createShops();
@@ -188,4 +189,17 @@ public class HomeActivity extends AppCompatActivity {
         finish();
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser == null){
+            Toast.makeText(getApplicationContext(), "Usuário não encontrado, login novamente", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
+        }else{
+            setupUserInfos();
+        }
+    }
 }
