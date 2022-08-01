@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="42dp"
-    tools:context=".ui.UserInfoActivity">
+    tools:context=".ui.user.view.UserInfoActivity">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/register_txt_user"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/register_ll_name"
+        android:id="@+id/register_ll_firstname"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,7 +33,31 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/register_edt_name"
+            android:id="@+id/register_edt_firstname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/green_primary"
+            android:inputType="text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_ll_lastname"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/last_name"
+        app:layout_constraintTop_toBottomOf="@+id/register_ll_firstname"
+        app:boxStrokeColor="@color/green_primary"
+        app:hintTextColor="@color/green_primary"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/register_edt_lastname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/green_primary"
@@ -51,9 +75,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/email"
+        android:layout_marginTop="8dp"
         app:boxStrokeColor="@color/green_primary"
         app:hintTextColor="@color/green_primary"
-        app:layout_constraintTop_toBottomOf="@+id/register_ll_name">
+        app:layout_constraintTop_toBottomOf="@+id/register_ll_lastname">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/register_edt_email"
@@ -74,6 +99,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/password"
         app:boxStrokeColor="@color/green_primary"
+        android:layout_marginTop="8dp"
         app:hintTextColor="@color/green_primary"
         app:layout_constraintTop_toBottomOf="@+id/register_tl_email">
 
@@ -96,6 +122,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/cpf"
         app:boxStrokeColor="@color/green_primary"
+        android:layout_marginTop="8dp"
         app:hintTextColor="@color/green_primary"
         app:layout_constraintTop_toBottomOf="@+id/register_tl_password">
 
@@ -119,6 +146,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/phone"
         app:boxStrokeColor="@color/green_primary"
+        android:layout_marginTop="8dp"
         app:hintTextColor="@color/green_primary"
         app:layout_constraintTop_toBottomOf="@+id/register_ll_cpf">
 

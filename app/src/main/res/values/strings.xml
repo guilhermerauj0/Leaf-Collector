@@ -55,4 +55,6 @@
     <string name="zero">0</string>
     <string name="change_password">Alterar senha</string>
     <string name="insert_email_for_recuperation">Insira e-mail para recuperação</string>
+    <string name="adress_icon">Endereço icone</string>
+    <string name="last_name">Sobrenome</string>
 </resources>

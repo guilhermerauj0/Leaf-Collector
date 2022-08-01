@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:backgroundTint="@color/offgray"
+    android:orientation="horizontal"
+    app:cardCornerRadius="15dp"
+    android:layout_marginBottom="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/adressitem_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/rvitem_imgadress"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@color/green_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/adress_icon" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rvitem_adress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:maxLines="1"
+            android:layout_marginTop="6dp"
+            tools:text="Rua tal"
+            android:textColor="@color/green_secundary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/rvitem_imgadress"
+            app:layout_constraintTop_toTopOf="@+id/rvitem_imgadress" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rvitem_district"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            tools:text="Centro"
+            android:textColor="@color/green_primary"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/rvitem_adress"
+            app:layout_constraintTop_toBottomOf="@+id/rvitem_adress" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvitem_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:maxLines="1"
+            android:text="@string/circle_text"
+            android:textColor="@color/green_primary"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/rvitem_district"
+            app:layout_constraintTop_toTopOf="@+id/rvitem_district" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rvitem_n"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:maxLines="1"
+            android:text="n"
+            android:textColor="@color/green_primary"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/tvitem_circle"
+            app:layout_constraintTop_toTopOf="@+id/tvitem_circle" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rvitem_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:maxLines="1"
+            android:textColor="@color/green_primary"
+            android:textSize="12sp"
+            tools:text="156"
+            app:layout_constraintStart_toEndOf="@+id/rvitem_n"
+            app:layout_constraintTop_toTopOf="@+id/rvitem_n" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

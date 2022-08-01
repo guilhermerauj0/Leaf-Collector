@@ -3,12 +3,20 @@ package leafenterprise.leafcollector.br.ui.home.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,16 +26,18 @@ import leafenterprise.leafcollector.br.domain.Product;
 import leafenterprise.leafcollector.br.domain.Shop;
 import leafenterprise.leafcollector.br.ui.CartActivity;
 import leafenterprise.leafcollector.br.ui.QrCodeActivity;
-import leafenterprise.leafcollector.br.ui.UserInfoActivity;
 import leafenterprise.leafcollector.br.ui.home.adapter.CartItemsAdapter;
 import leafenterprise.leafcollector.br.ui.home.adapter.ShopsAdapter;
 import leafenterprise.leafcollector.br.ui.login.LoginActivity;
+import leafenterprise.leafcollector.br.ui.user.view.UserInfoActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
     private ShopsAdapter shopsAdapter;
     private CartItemsAdapter cartItemsAdapter;
+    private FirebaseDatabase userDb;
+    private DatabaseReference dbReference;
     private List<Shop> listShops;
     public List<Product> listCart;
     private FirebaseAuth mAuth;
@@ -37,6 +47,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        //TODO "Emitir alerta de usuario excluido e desloga-lo"
 
         mAuth = FirebaseAuth.getInstance();
         setupShopList();
@@ -84,6 +96,24 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    private void setupUserInfos() {
+        String user = mAuth.getCurrentUser().getUid();
+        userDb = FirebaseDatabase.getInstance();
+        dbReference = userDb.getReference("Users");
+
+        dbReference.child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                DataSnapshot dataUser = task.getResult();
+                String userName = String.valueOf(dataUser.child("name").getValue());
+                String userLeafs = String.valueOf(dataUser.child("leafs").getValue());
+                binding.homeTxtUser.setText(userName);
+                binding.homeTxtLeafs.setText(userLeafs);
+            }
+        });
+
+    }
+
     private void setupShopList() {
         listShops = new ArrayList<>();
         shopsAdapter = new ShopsAdapter(this, listShops);
@@ -96,7 +126,12 @@ public class HomeActivity extends AppCompatActivity {
     private void setupCartList() {
         listCart = new ArrayList<>();
         cartItemsAdapter = new CartItemsAdapter(this, listCart);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
         binding.homeRvCartitems.setLayoutManager(layoutManager);
         binding.homeRvCartitems.setHasFixedSize(true);
         binding.homeRvCartitems.setAdapter(cartItemsAdapter);
@@ -154,4 +189,17 @@ public class HomeActivity extends AppCompatActivity {
         finish();
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser == null){
+            Toast.makeText(getApplicationContext(), "Usuário não encontrado, login novamente", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
+        }else{
+            setupUserInfos();
+        }
+    }
 }
