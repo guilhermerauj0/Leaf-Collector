@@ -1,5 +1,6 @@
 package leafenterprise.leafcollector.br.ui.user.view;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -40,7 +41,7 @@ public class UserInfoActivity extends AppCompatActivity {
 
         setupUserInfos();
         setupAdresses();
-        createAdresses();
+
 
         binding.userinfoBtnAddadress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,11 +94,42 @@ public class UserInfoActivity extends AppCompatActivity {
         binding.userinfoRvAdress.setLayoutManager(layoutManager);
         binding.userinfoRvAdress.setHasFixedSize(true);
         binding.userinfoRvAdress.setAdapter(adressAdapter);
+
+        mAuth = FirebaseAuth.getInstance();
+        String user = mAuth.getCurrentUser().getUid();
+        userDb = FirebaseDatabase.getInstance();
+        dbReference = userDb.getReference("Users");
+
+        dbReference.child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if(task.isSuccessful()){
+                    if (task.getResult().exists()){
+                        DataSnapshot dataUser = task.getResult();
+                        String adress = String.valueOf(dataUser.child("adress").getValue());
+                        String num = String.valueOf(dataUser.child("num").getValue());
+                        String complement = String.valueOf(dataUser.child("complement").getValue());
+                        String district = String.valueOf(dataUser.child("district").getValue());
+                        String city = String.valueOf(dataUser.child("city").getValue());
+                        String state = String.valueOf(dataUser.child("state").getValue());
+                        String cep = String.valueOf(dataUser.child("cep").getValue());
+
+                        Adress list = new Adress(adress, num, complement, district, city, state, cep);
+
+                        listAdress.add(list);
+                        adressAdapter.notifyDataSetChanged();
+
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Sem endereços", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(getApplicationContext(), "Não foi possível acessar os endereços", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+        });
+
     }
-
-
-    private void createAdresses() {
-        // TODO "Recycler View Retrieve data"
-    }
-
 }
