@@ -29,7 +29,7 @@
             android:name=".ui.login.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.QrCodeActivity"
+            android:name=".ui.qrcode.QrCodeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.ProductActivity"
@@ -38,13 +38,13 @@
             android:name=".ui.LeafReaderActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.BuyProofActivity"
+            android:name=".ui.proofs.BuyProofActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.ChangeSuccessActivity"
+            android:name=".ui.proofs.ChangeSuccessActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.ChangeProofActivity"
+            android:name=".ui.proofs.ChangeProofActivity"
             android:exported="false" />
         <activity
             android:name=".ui.shop.view.ShopActivity"

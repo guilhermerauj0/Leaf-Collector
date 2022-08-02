@@ -1,4 +1,4 @@
-package leafenterprise.leafcollector.br.ui
+package leafenterprise.leafcollector.br.ui.proofs
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

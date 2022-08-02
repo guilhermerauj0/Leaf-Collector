@@ -1,4 +1,4 @@
-package leafenterprise.leafcollector.br.ui;
+package leafenterprise.leafcollector.br.ui.qrcode;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
