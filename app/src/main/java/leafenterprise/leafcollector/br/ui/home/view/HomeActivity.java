@@ -25,7 +25,7 @@ import leafenterprise.leafcollector.br.databinding.ActivityHomeBinding;
 import leafenterprise.leafcollector.br.domain.Product;
 import leafenterprise.leafcollector.br.domain.Shop;
 import leafenterprise.leafcollector.br.ui.CartActivity;
-import leafenterprise.leafcollector.br.ui.QrCodeActivity;
+import leafenterprise.leafcollector.br.ui.qrcode.QrCodeActivity;
 import leafenterprise.leafcollector.br.ui.home.adapter.CartItemsAdapter;
 import leafenterprise.leafcollector.br.ui.home.adapter.ShopsAdapter;
 import leafenterprise.leafcollector.br.ui.login.LoginActivity;

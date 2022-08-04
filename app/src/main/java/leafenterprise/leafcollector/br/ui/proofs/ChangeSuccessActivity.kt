@@ -1,9 +1,8 @@
-package leafenterprise.leafcollector.br.ui
+package leafenterprise.leafcollector.br.ui.proofs
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import leafenterprise.leafcollector.br.R
 import leafenterprise.leafcollector.br.databinding.ActivityChangeSuccessBinding
 
 class ChangeSuccessActivity : AppCompatActivity() {
