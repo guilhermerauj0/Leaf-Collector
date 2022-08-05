@@ -48,8 +48,6 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //TODO "Emitir alerta de usuario excluido e desloga-lo"
-
         mAuth = FirebaseAuth.getInstance();
         setupShopList();
         setupCartList();
