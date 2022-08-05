@@ -48,11 +48,8 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        mAuth = FirebaseAuth.getInstance();
         setupShopList();
         setupCartList();
-        createShops();
-        createItemsCart();
 
         // ABRIR LEITOR QRCODE
         binding.homeBtnChangebags.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +91,7 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+
     private void setupShopList() {
         listShops = new ArrayList<>();
         shopsAdapter = new ShopsAdapter(this, listShops);
@@ -101,6 +99,8 @@ public class HomeActivity extends AppCompatActivity {
         binding.homeRvShops.setLayoutManager(layoutManager);
         binding.homeRvShops.setHasFixedSize(true);
         binding.homeRvShops.setAdapter(shopsAdapter);
+
+        createShops();
     }
 
     private void setupCartList() {
@@ -115,6 +115,8 @@ public class HomeActivity extends AppCompatActivity {
         binding.homeRvCartitems.setLayoutManager(layoutManager);
         binding.homeRvCartitems.setHasFixedSize(true);
         binding.homeRvCartitems.setAdapter(cartItemsAdapter);
+
+        createItemsCart();
 
     }
 
@@ -173,20 +175,22 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        mAuth = FirebaseAuth.getInstance();
+        String user = mAuth.getCurrentUser().getUid();
+        userDb = FirebaseDatabase.getInstance();
+        dbReference = userDb.getReference("Users");
         FirebaseUser currentUser = mAuth.getCurrentUser();
+
         if (currentUser == null) {
             Toast.makeText(getApplicationContext(), "Usuário não encontrado, login novamente", Toast.LENGTH_LONG).show();
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             finish();
         } else {
-            setupUserInfos();
+            setupUserInfos(user,dbReference);
         }
     }
 
-    private void setupUserInfos() {
-        String user = mAuth.getCurrentUser().getUid();
-        userDb = FirebaseDatabase.getInstance();
-        dbReference = userDb.getReference("Users");
+    private void setupUserInfos(String user, DatabaseReference dbReference) {
 
         dbReference.child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
