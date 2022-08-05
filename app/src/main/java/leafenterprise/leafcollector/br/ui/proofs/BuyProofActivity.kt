@@ -1,8 +1,7 @@
 package leafenterprise.leafcollector.br.ui.proofs
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import leafenterprise.leafcollector.br.R
+import androidx.appcompat.app.AppCompatActivity
 import leafenterprise.leafcollector.br.databinding.ActivityBuyProofBinding
 
 

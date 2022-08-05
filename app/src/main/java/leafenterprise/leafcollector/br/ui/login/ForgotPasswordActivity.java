@@ -28,12 +28,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         
-        binding.fpasswordBtnChangepassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                changePassword();
-            }
-        });
+        binding.fpasswordBtnChangepassword.setOnClickListener(view -> changePassword());
 
     }
 
@@ -47,15 +42,12 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             binding.fpasswordEdtEmail.requestFocus();
         } else{
             mAuth.sendPasswordResetEmail(email)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-                                Toast.makeText(getApplicationContext(), "Verifique seu email para mudar a senha", Toast.LENGTH_LONG).show();
-                                finish();
-                            }else{
-                                Toast.makeText(getApplicationContext(), "Tente denovo, algum erro aconteceu!", Toast.LENGTH_SHORT).show();
-                            }
+                    .addOnCompleteListener(task -> {
+                        if(task.isSuccessful()){
+                            Toast.makeText(getApplicationContext(), "Verifique seu email para mudar a senha", Toast.LENGTH_LONG).show();
+                            finish();
+                        }else{
+                            Toast.makeText(getApplicationContext(), "Tente denovo, algum erro aconteceu!", Toast.LENGTH_SHORT).show();
                         }
                     });
         }

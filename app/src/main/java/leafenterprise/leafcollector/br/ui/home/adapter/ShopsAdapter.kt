@@ -30,8 +30,10 @@ class ShopsAdapter(
 
     inner class ViewHolder (val binding: HomeRvShopsItemBinding) : RecyclerView.ViewHolder(binding.root){
         init {
-            binding.rvitemImgshop.setOnClickListener{
+            binding.llShop.setOnClickListener{
                 val intent : Intent = Intent(context, ShopActivity::class.java)
+                intent.putExtra("shop_name", binding.rvitemShop.text)
+                intent.putExtra("shop_category", binding.rvitemCategory.text)
                 context.startActivity(intent)
             }
         }

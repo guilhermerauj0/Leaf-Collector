@@ -57,4 +57,5 @@
     <string name="insert_email_for_recuperation">Insira e-mail para recuperação</string>
     <string name="adress_icon">Endereço icone</string>
     <string name="last_name">Sobrenome</string>
+    <string name="description">Descrição</string>
 </resources>

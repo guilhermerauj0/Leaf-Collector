@@ -1,7 +1,6 @@
 package leafenterprise.leafcollector.br.ui.user.view;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,13 +26,10 @@ public class AdressActivity extends AppCompatActivity {
         binding = ActivityAdressBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.adressBtnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setupViewObjects();
-                insertAdressData();
-                finish();
-            }
+        binding.adressBtnConfirm.setOnClickListener(view -> {
+            setupViewObjects();
+            insertAdressData();
+            finish();
         });
     }
 
