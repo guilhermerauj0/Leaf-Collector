@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -39,10 +40,6 @@ public class UserInfoActivity extends AppCompatActivity {
         binding = leafenterprise.leafcollector.br.databinding.ActivityUserInfoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setupUserInfos();
-        setupAdresses();
-
-
         binding.userinfoBtnAddadress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,12 +48,25 @@ public class UserInfoActivity extends AppCompatActivity {
         });
     }
 
-    private void setupUserInfos() {
-
+    @Override
+    protected void onStart() {
+        super.onStart();
         mAuth = FirebaseAuth.getInstance();
         String user = mAuth.getCurrentUser().getUid();
         userDb = FirebaseDatabase.getInstance();
         dbReference = userDb.getReference("Users");
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+
+        if (currentUser != null){
+            setupUserInfos(user, dbReference);
+            setupAdresses(user, dbReference);
+        }
+
+    }
+
+    private void setupUserInfos(String user, DatabaseReference dbReference) {
+
 
         dbReference.child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -87,7 +97,7 @@ public class UserInfoActivity extends AppCompatActivity {
 
     }
 
-    private void setupAdresses() {
+    private void setupAdresses(String user, DatabaseReference dbReference) {
         listAdress = new ArrayList<>();
         adressAdapter = new AdressAdapter(this, listAdress);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -95,12 +105,7 @@ public class UserInfoActivity extends AppCompatActivity {
         binding.userinfoRvAdress.setHasFixedSize(true);
         binding.userinfoRvAdress.setAdapter(adressAdapter);
 
-        mAuth = FirebaseAuth.getInstance();
-        String user = mAuth.getCurrentUser().getUid();
-        userDb = FirebaseDatabase.getInstance();
-        dbReference = userDb.getReference("Users");
-
-        dbReference.child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        dbReference.child(user).child("Endereço").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -126,10 +131,7 @@ public class UserInfoActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(getApplicationContext(), "Não foi possível acessar os endereços", Toast.LENGTH_SHORT).show();
                 }
-
             }
-
         });
-
     }
 }

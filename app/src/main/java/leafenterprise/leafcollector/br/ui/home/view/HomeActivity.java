@@ -25,10 +25,10 @@ import leafenterprise.leafcollector.br.databinding.ActivityHomeBinding;
 import leafenterprise.leafcollector.br.domain.Product;
 import leafenterprise.leafcollector.br.domain.Shop;
 import leafenterprise.leafcollector.br.ui.CartActivity;
-import leafenterprise.leafcollector.br.ui.qrcode.QrCodeActivity;
 import leafenterprise.leafcollector.br.ui.home.adapter.CartItemsAdapter;
 import leafenterprise.leafcollector.br.ui.home.adapter.ShopsAdapter;
 import leafenterprise.leafcollector.br.ui.login.LoginActivity;
+import leafenterprise.leafcollector.br.ui.qrcode.QrCodeActivity;
 import leafenterprise.leafcollector.br.ui.user.view.UserInfoActivity;
 
 public class HomeActivity extends AppCompatActivity {
@@ -48,13 +48,8 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //TODO "Emitir alerta de usuario excluido e desloga-lo"
-
-        mAuth = FirebaseAuth.getInstance();
         setupShopList();
         setupCartList();
-        createShops();
-        createItemsCart();
 
         // ABRIR LEITOR QRCODE
         binding.homeBtnChangebags.setOnClickListener(new View.OnClickListener() {
@@ -96,23 +91,6 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    private void setupUserInfos() {
-        String user = mAuth.getCurrentUser().getUid();
-        userDb = FirebaseDatabase.getInstance();
-        dbReference = userDb.getReference("Users");
-
-        dbReference.child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                DataSnapshot dataUser = task.getResult();
-                String userName = String.valueOf(dataUser.child("name").getValue());
-                String userLeafs = String.valueOf(dataUser.child("leafs").getValue());
-                binding.homeTxtUser.setText(userName);
-                binding.homeTxtLeafs.setText(userLeafs);
-            }
-        });
-
-    }
 
     private void setupShopList() {
         listShops = new ArrayList<>();
@@ -121,6 +99,8 @@ public class HomeActivity extends AppCompatActivity {
         binding.homeRvShops.setLayoutManager(layoutManager);
         binding.homeRvShops.setHasFixedSize(true);
         binding.homeRvShops.setAdapter(shopsAdapter);
+
+        createShops();
     }
 
     private void setupCartList() {
@@ -135,6 +115,8 @@ public class HomeActivity extends AppCompatActivity {
         binding.homeRvCartitems.setLayoutManager(layoutManager);
         binding.homeRvCartitems.setHasFixedSize(true);
         binding.homeRvCartitems.setAdapter(cartItemsAdapter);
+
+        createItemsCart();
 
     }
 
@@ -193,13 +175,33 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        mAuth = FirebaseAuth.getInstance();
+        String user = mAuth.getCurrentUser().getUid();
+        userDb = FirebaseDatabase.getInstance();
+        dbReference = userDb.getReference("Users");
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser == null){
+
+        if (currentUser == null) {
             Toast.makeText(getApplicationContext(), "Usuário não encontrado, login novamente", Toast.LENGTH_LONG).show();
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             finish();
-        }else{
-            setupUserInfos();
+        } else {
+            setupUserInfos(user,dbReference);
         }
+    }
+
+    private void setupUserInfos(String user, DatabaseReference dbReference) {
+
+        dbReference.child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                DataSnapshot dataUser = task.getResult();
+                String userName = String.valueOf(dataUser.child("name").getValue());
+                String userLeafs = String.valueOf(dataUser.child("leafs").getValue());
+                binding.homeTxtUser.setText(userName);
+                binding.homeTxtLeafs.setText(userLeafs);
+            }
+        });
+
     }
 }

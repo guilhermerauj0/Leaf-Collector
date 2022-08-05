@@ -8,11 +8,20 @@
     tools:context=".ui.proofs.ChangeSuccessActivity">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/buyproof_cv"
+        android:id="@+id/changesuccess_cv"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:backgroundTint="@color/green_primary"
         app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/changesuccess_return"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_arrow_left"
+            app:tint="@color/off_white" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -25,11 +34,11 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/buyproof_txt_datetime"
+        android:id="@+id/changesuccess_txt_datetime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/buyproof_cv"
+        app:layout_constraintTop_toBottomOf="@+id/changesuccess_cv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="48dp"
@@ -39,11 +48,11 @@
         />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/buyproof_txt_enterpraisename"
+        android:id="@+id/changesuccess_txt_enterpraisename"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/buyproof_txt_datetime"
+        app:layout_constraintTop_toBottomOf="@+id/changesuccess_txt_datetime"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
@@ -53,14 +62,15 @@
         />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/buyproof_txt_leaf"
+        android:id="@+id/changesuccess_txt_enterprise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/buyproof_txt_enterpraisename"
+        app:layout_constraintTop_toBottomOf="@+id/changesuccess_txt_enterpraisename"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="NILZA SUPERMERCADO"
+        android:text="leafs adicionados"
+        android:textAllCaps="true"
         android:textStyle="bold"
         android:textColor="@color/green_secundary"
         />
@@ -70,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/buyproof_txt_leaf"
+        app:layout_constraintTop_toBottomOf="@+id/changesuccess_txt_enterprise"
         app:layout_constraintEnd_toStartOf="@+id/changesuccess_img_leaf"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/plus"
@@ -100,7 +110,7 @@
         tools:text="80"
         android:layout_marginTop="16dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/buyproof_txt_leaf" />
+        app:layout_constraintTop_toBottomOf="@+id/changesuccess_txt_enterprise" />
 
     <LinearLayout
         android:id="@+id/ll_proof"

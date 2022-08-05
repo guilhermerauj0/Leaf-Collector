@@ -17,7 +17,7 @@
     <string name="change_proof">Comprovante de Troca</string>
     <string name="user">Usuário</string>
     <string name="enterpraise">Empresa</string>
-    <string name="info_proof">Este comprovante é apenas\numa simulação criada para um\nprojeto de processo seletivo.</string>
+    <string name="info_proof">Este comprovante é apenas\numa simulação criada para um\nprojeto de estudo.</string>
     <string name="change_success">Troca Efetuada</string>
 
     <string name="approach_qrcode">Aproxime o QRCODE</string>
