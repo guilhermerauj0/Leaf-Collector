@@ -51,44 +51,15 @@ public class HomeActivity extends AppCompatActivity {
         setupShopList();
         setupCartList();
 
-        // ABRIR LEITOR QRCODE
-        binding.homeBtnChangebags.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                readQrCode();
-            }
-        });
+        binding.homeBtnChangebags.setOnClickListener(view -> readQrCode());
 
-        // INFO BUTTON
-        binding.homeImgInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                inform();
-            }
-        });
+        binding.homeImgInfo.setOnClickListener(view -> inform());
 
-        // ABRIR CARRINHO
-        binding.homeImgCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openCart();
-            }
-        });
+        binding.homeImgCart.setOnClickListener(view -> openCart());
 
-        // ABRIR TELA DE USUARIO
-        binding.homeImgUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openUser();
-            }
-        });
+        binding.homeImgUser.setOnClickListener(view -> openUser());
 
-        binding.homeTxtSignout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signOutAccount();
-            }
-        });
+        binding.homeTxtSignout.setOnClickListener(view -> signOutAccount());
     }
 
 
@@ -121,15 +92,15 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void createShops() {
-        Shop shop1 = new Shop("Nilza Supermercado", "Alimentos");
+        Shop shop1 = new Shop("Fulano Supermercado", "Alimentos");
         listShops.add(shop1);
         Shop shop2 = new Shop("Zé do Pé", "Calçados");
         listShops.add(shop2);
-        Shop shop3 = new Shop("Univasf Acessórios", "Mimos");
+        Shop shop3 = new Shop("O Cara's Bugigangas", "Acessórios");
         listShops.add(shop3);
-        Shop shop4 = new Shop("Folhas Perso", "Personalização");
+        Shop shop4 = new Shop("Casa dos Brindes", "Personalização");
         listShops.add(shop4);
-        Shop shop5 = new Shop("Pantovin", "Cabelos");
+        Shop shop5 = new Shop("Salão da Maria", "Cabelos");
         listShops.add(shop5);
         Shop shop6 = new Shop("VS Computadores", "Eletrônicos");
         listShops.add(shop6);
@@ -192,15 +163,12 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setupUserInfos(String user, DatabaseReference dbReference) {
 
-        dbReference.child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                DataSnapshot dataUser = task.getResult();
-                String userName = String.valueOf(dataUser.child("name").getValue());
-                String userLeafs = String.valueOf(dataUser.child("leafs").getValue());
-                binding.homeTxtUser.setText(userName);
-                binding.homeTxtLeafs.setText(userLeafs);
-            }
+        dbReference.child(user).get().addOnCompleteListener(task -> {
+            DataSnapshot dataUser = task.getResult();
+            String userName = String.valueOf(dataUser.child("name").getValue());
+            String userLeafs = String.valueOf(dataUser.child("leafs").getValue());
+            binding.homeTxtUser.setText(userName);
+            binding.homeTxtLeafs.setText(userLeafs);
         });
 
     }

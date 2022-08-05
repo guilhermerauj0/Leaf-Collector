@@ -1,12 +1,13 @@
 package leafenterprise.leafcollector.br.ui.shop.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import leafenterprise.leafcollector.br.databinding.ProductsItemBinding
 import leafenterprise.leafcollector.br.domain.Product
+import leafenterprise.leafcollector.br.ui.ProductActivity
 
 class ProductAdapter(
     var context: Context,
@@ -18,15 +19,23 @@ class ProductAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.shopitemTxtProductname.text = listProduct[position].name
-        holder.binding.shopitemTxtPrice.text = listProduct[position].price.toString()
+        val name : String = listProduct[position].name
+        val description : String = listProduct[position].description
+        val quantity : Int = listProduct[position].quantity
+        val price : Int = listProduct[position].price
+        val image : String? = listProduct[position].image
 
-        holder.binding.productitemLl.setOnClickListener {
-            Toast.makeText(
-                context,
-                "Voce clicou no ${listProduct[position].name}",
-                Toast.LENGTH_SHORT
-            ).show()
+        holder.binding.shopitemTxtProductname.text = name
+        holder.binding.shopitemTxtPrice.text = price.toString()
+
+        holder.binding.productitemLl.setOnClickListener{
+            val intent : Intent = Intent(context, ProductActivity::class.java)
+            intent.putExtra("product_name", name)
+            intent.putExtra("product_description", description)
+            intent.putExtra("product_price", price)
+            intent.putExtra("product_image", image)
+            context.startActivity(intent)
+
         }
     }
 

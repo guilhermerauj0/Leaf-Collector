@@ -78,34 +78,31 @@ public class RegisterActivity extends AppCompatActivity {
 
         } else {
             mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                User user = new User(name, lastName ,email, cpf, phone, 0);
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
+                            User user = new User(name, lastName ,email, cpf, phone, 0);
 
-                                // ADD USER TO DATABASE
-                                FirebaseDatabase.getInstance().getReference("Users")
-                                        .child(mAuth.getCurrentUser().getUid())
-                                        .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    Toast.makeText(RegisterActivity.this, "Usuário criado",
-                                                            Toast.LENGTH_SHORT).show();
-                                                } else {
-                                                    Toast.makeText(RegisterActivity.this, "Erro ao criar usuário",
-                                                            Toast.LENGTH_SHORT).show();
-                                                }
+                            // ADD USER TO DATABASE
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(mAuth.getCurrentUser().getUid())
+                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(RegisterActivity.this, "Usuário criado",
+                                                        Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                Toast.makeText(RegisterActivity.this, "Erro ao criar usuário",
+                                                        Toast.LENGTH_SHORT).show();
                                             }
-                                        });
+                                        }
+                                    });
 
-                                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                                finish();
-                            } else {
-                                Toast.makeText(RegisterActivity.this, "Autenticação falhou",
-                                        Toast.LENGTH_SHORT).show();
-                            }
+                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                            finish();
+                        } else {
+                            Toast.makeText(RegisterActivity.this, "Autenticação falhou",
+                                    Toast.LENGTH_SHORT).show();
                         }
                     });
         }

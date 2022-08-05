@@ -1,13 +1,12 @@
 package leafenterprise.leafcollector.br.ui.proofs
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import leafenterprise.leafcollector.br.databinding.ActivityChangeSuccessBinding
 import leafenterprise.leafcollector.br.ui.home.view.HomeActivity
 
@@ -52,7 +51,6 @@ class ChangeSuccessActivity : AppCompatActivity() {
         val qrCodeValue : String? = intent.getStringExtra("qrcode_value")
         val oldLeaf : Int = intent.getIntExtra("oldLeaf", 0)
         val valueLeaf : Int? = qrCodeValue?.let { Integer.parseInt(it) }
-        //val valueOldLeaf : Int? = oldLeaf?.let { Integer.parseInt(it) }
         if (valueLeaf != null ) {
             addValueToUser(valueLeaf, oldLeaf)
         }else{

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,11 +14,7 @@ import androidx.core.content.ContextCompat;
 
 import com.budiyev.android.codescanner.AutoFocusMode;
 import com.budiyev.android.codescanner.CodeScanner;
-import com.budiyev.android.codescanner.DecodeCallback;
-import com.budiyev.android.codescanner.ErrorCallback;
 import com.budiyev.android.codescanner.ScanMode;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
@@ -71,38 +66,15 @@ public class QrCodeActivity extends AppCompatActivity {
         codeScanner.setFlashEnabled(true);
         codeScanner.setScanMode(ScanMode.SINGLE);
 
-        codeScanner.setDecodeCallback(new DecodeCallback() {
-            @Override
-            public void onDecoded(@NonNull Result result) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Exibição da resposta de leitura bem sucedida
-                        catchOldLeafFromDatabase(result);
-                        Toast.makeText(QrCodeActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
+        codeScanner.setDecodeCallback(result -> runOnUiThread(() -> {
+            // Exibição da resposta de leitura bem sucedida
+            catchOldLeafFromDatabase(result);
+            Toast.makeText(QrCodeActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
+        }));
 
-        codeScanner.setErrorCallback(new ErrorCallback() {
-            @Override
-            public void onError(@NonNull Throwable thrown) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Log.e("Main", "Camera error");
-                    }
-                });
-            }
-        });
+        codeScanner.setErrorCallback(thrown -> runOnUiThread(() -> Log.e("Main", "Camera error")));
 
-        binding.qrcodeCodescanner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                codeScanner.startPreview();
-            }
-        });
+        binding.qrcodeCodescanner.setOnClickListener(view -> codeScanner.startPreview());
 
     }
 
@@ -112,13 +84,10 @@ public class QrCodeActivity extends AppCompatActivity {
         userDb = FirebaseDatabase.getInstance();
         dbReference = userDb.getReference("Users");
 
-        dbReference.child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                DataSnapshot dataUser = task.getResult();
-                String oldLeaf = String.valueOf(dataUser.child("leafs").getValue());
-                sendDataToChangeSuccessActivity(Integer.parseInt(oldLeaf), result);
-            }
+        dbReference.child(user).get().addOnCompleteListener(task -> {
+            DataSnapshot dataUser = task.getResult();
+            String oldLeaf = String.valueOf(dataUser.child("leafs").getValue());
+            sendDataToChangeSuccessActivity(Integer.parseInt(oldLeaf), result);
         });
     }
 

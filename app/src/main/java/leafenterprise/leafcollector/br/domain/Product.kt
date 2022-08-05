@@ -5,5 +5,5 @@ class Product(
     val description : String,
     val quantity: Int,
     val price: Int,
-    val image: String
+    val image: String?
 )

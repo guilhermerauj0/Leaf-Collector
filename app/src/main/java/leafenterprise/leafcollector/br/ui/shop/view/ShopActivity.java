@@ -26,7 +26,27 @@ public class ShopActivity extends AppCompatActivity {
         binding = ActivityShopBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        setupShopInfo();
         setupProductList();
+
+    }
+
+    private void setupShopInfo() {
+        String shopName = getIntent().getStringExtra("shop_name");
+        String shopCategory = getIntent().getStringExtra("shop_category");
+
+        binding.shopTxtShop.setText(shopName);
+        binding.shopTxtCategory.setText(shopCategory);
+
+    }
+
+    private void setupProductList() {
+        listProduct = new ArrayList<>();
+        productAdapter = new ProductAdapter(this, listProduct);
+        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 3, LinearLayoutManager.VERTICAL, false);
+        binding.rvitemProducts.setLayoutManager(gridLayoutManager);
+        binding.rvitemProducts.setHasFixedSize(true);
+        binding.rvitemProducts.setAdapter(productAdapter);
         createProductList();
 
     }
@@ -38,15 +58,5 @@ public class ShopActivity extends AppCompatActivity {
         listProduct.add(product2);
         Product product3 = new Product("TV Smart", "Ideal para assistir", 2, 7040, "");
         listProduct.add(product3);
-    }
-
-    private void setupProductList() {
-        listProduct = new ArrayList<>();
-        productAdapter = new ProductAdapter(this, listProduct);
-        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 3, LinearLayoutManager.VERTICAL, false);
-        binding.rvitemProducts.setLayoutManager(gridLayoutManager);
-        binding.rvitemProducts.setHasFixedSize(true);
-        binding.rvitemProducts.setAdapter(productAdapter);
-
     }
 }
