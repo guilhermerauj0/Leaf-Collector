@@ -25,10 +25,10 @@ import leafenterprise.leafcollector.br.databinding.ActivityHomeBinding;
 import leafenterprise.leafcollector.br.domain.Product;
 import leafenterprise.leafcollector.br.domain.Shop;
 import leafenterprise.leafcollector.br.ui.CartActivity;
-import leafenterprise.leafcollector.br.ui.qrcode.QrCodeActivity;
 import leafenterprise.leafcollector.br.ui.home.adapter.CartItemsAdapter;
 import leafenterprise.leafcollector.br.ui.home.adapter.ShopsAdapter;
 import leafenterprise.leafcollector.br.ui.login.LoginActivity;
+import leafenterprise.leafcollector.br.ui.qrcode.QrCodeActivity;
 import leafenterprise.leafcollector.br.ui.user.view.UserInfoActivity;
 
 public class HomeActivity extends AppCompatActivity {
@@ -94,24 +94,6 @@ public class HomeActivity extends AppCompatActivity {
                 signOutAccount();
             }
         });
-    }
-
-    private void setupUserInfos() {
-        String user = mAuth.getCurrentUser().getUid();
-        userDb = FirebaseDatabase.getInstance();
-        dbReference = userDb.getReference("Users");
-
-        dbReference.child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                DataSnapshot dataUser = task.getResult();
-                String userName = String.valueOf(dataUser.child("name").getValue());
-                String userLeafs = String.valueOf(dataUser.child("leafs").getValue());
-                binding.homeTxtUser.setText(userName);
-                binding.homeTxtLeafs.setText(userLeafs);
-            }
-        });
-
     }
 
     private void setupShopList() {
@@ -194,12 +176,30 @@ public class HomeActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser == null){
+        if (currentUser == null) {
             Toast.makeText(getApplicationContext(), "Usuário não encontrado, login novamente", Toast.LENGTH_LONG).show();
             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             finish();
-        }else{
+        } else {
             setupUserInfos();
         }
+    }
+
+    private void setupUserInfos() {
+        String user = mAuth.getCurrentUser().getUid();
+        userDb = FirebaseDatabase.getInstance();
+        dbReference = userDb.getReference("Users");
+
+        dbReference.child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                DataSnapshot dataUser = task.getResult();
+                String userName = String.valueOf(dataUser.child("name").getValue());
+                String userLeafs = String.valueOf(dataUser.child("leafs").getValue());
+                binding.homeTxtUser.setText(userName);
+                binding.homeTxtLeafs.setText(userLeafs);
+            }
+        });
+
     }
 }

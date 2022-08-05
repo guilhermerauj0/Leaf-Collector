@@ -1,6 +1,7 @@
 package leafenterprise.leafcollector.br.ui.qrcode;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,14 +18,24 @@ import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.DecodeCallback;
 import com.budiyev.android.codescanner.ErrorCallback;
 import com.budiyev.android.codescanner.ScanMode;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.Result;
 
 import leafenterprise.leafcollector.br.databinding.ActivityQrCodeBinding;
+import leafenterprise.leafcollector.br.ui.proofs.ChangeSuccessActivity;
 
 public class QrCodeActivity extends AppCompatActivity {
 
     private static final int CAMERA_REQUEST_CODE = 101;
     private ActivityQrCodeBinding binding;
+    private FirebaseAuth mAuth;
+    private DatabaseReference dbReference;
+    private FirebaseDatabase userDb;
     private CodeScanner codeScanner;
 
     @Override
@@ -35,6 +46,19 @@ public class QrCodeActivity extends AppCompatActivity {
 
         setupPermissions();
         codeScanner();
+    }
+
+    private void setupPermissions() {
+        int permission = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            makeRequest();
+        }
+    }
+
+    private void makeRequest() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_REQUEST_CODE);
     }
 
     private void codeScanner() {
@@ -54,8 +78,8 @@ public class QrCodeActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         // Exibição da resposta de leitura bem sucedida
+                        catchOldLeafFromDatabase(result);
                         Toast.makeText(QrCodeActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
-                        finish();
                     }
                 });
             }
@@ -82,17 +106,28 @@ public class QrCodeActivity extends AppCompatActivity {
 
     }
 
-    private void setupPermissions() {
-        int permission = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.CAMERA);
+    private void catchOldLeafFromDatabase(Result result) {
+        mAuth = FirebaseAuth.getInstance();
+        String user = mAuth.getCurrentUser().getUid();
+        userDb = FirebaseDatabase.getInstance();
+        dbReference = userDb.getReference("Users");
 
-        if (permission != PackageManager.PERMISSION_GRANTED) {
-            makeRequest();
-        }
+        dbReference.child(user).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                DataSnapshot dataUser = task.getResult();
+                String oldLeaf = String.valueOf(dataUser.child("leafs").getValue());
+                sendDataToChangeSuccessActivity(Integer.parseInt(oldLeaf), result);
+            }
+        });
     }
 
-    private void makeRequest() {
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_REQUEST_CODE);
+    private void sendDataToChangeSuccessActivity(Integer oldLeaf, Result result) {
+        Intent intent = new Intent(getApplicationContext(), ChangeSuccessActivity.class);
+        intent.putExtra("qrcode_value", result.getText());
+        intent.putExtra("oldLeaf", oldLeaf);
+        startActivity(intent);
+        finish();
     }
 
     @Override
