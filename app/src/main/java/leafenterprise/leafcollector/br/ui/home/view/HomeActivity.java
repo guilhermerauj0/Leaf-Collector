@@ -2,16 +2,12 @@ package leafenterprise.leafcollector.br.ui.home.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,7 +20,7 @@ import java.util.List;
 import leafenterprise.leafcollector.br.databinding.ActivityHomeBinding;
 import leafenterprise.leafcollector.br.domain.Product;
 import leafenterprise.leafcollector.br.domain.Shop;
-import leafenterprise.leafcollector.br.ui.CartActivity;
+import leafenterprise.leafcollector.br.ui.cart.CartActivity;
 import leafenterprise.leafcollector.br.ui.home.adapter.CartItemsAdapter;
 import leafenterprise.leafcollector.br.ui.home.adapter.ShopsAdapter;
 import leafenterprise.leafcollector.br.ui.login.LoginActivity;

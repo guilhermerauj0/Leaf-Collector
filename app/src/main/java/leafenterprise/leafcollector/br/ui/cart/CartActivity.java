@@ -1,8 +1,9 @@
-package leafenterprise.leafcollector.br.ui;
+package leafenterprise.leafcollector.br.ui.cart;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
 import leafenterprise.leafcollector.br.R;
 
 public class CartActivity extends AppCompatActivity {

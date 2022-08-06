@@ -32,10 +32,7 @@
             android:name=".ui.qrcode.QrCodeActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.ProductActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.LeafReaderActivity"
+            android:name=".ui.product.ProductActivity"
             android:exported="false" />
         <activity
             android:name=".ui.proofs.BuyProofActivity"
@@ -56,13 +53,13 @@
             android:name=".ui.user.view.UserInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.CartActivity"
+            android:name=".ui.cart.CartActivity"
             android:exported="false" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.SplashScreen"
+            android:name=".ui.splashscreen.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
