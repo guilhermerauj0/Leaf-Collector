@@ -58,4 +58,7 @@
     <string name="adress_icon">Endereço icone</string>
     <string name="last_name">Sobrenome</string>
     <string name="description">Descrição</string>
+    <string name="total">Total</string>
+    <string name="buy">Comprar</string>
+    <string name="_1">1</string>
 </resources>

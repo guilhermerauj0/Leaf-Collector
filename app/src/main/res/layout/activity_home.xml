@@ -117,20 +117,6 @@
                 android:contentDescription="@string/open_cart"
                 app:tint="@color/off_white" />
 
-            <ImageView
-                android:id="@+id/home_img_info"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_baseline_info_24"
-                android:layout_marginEnd="6dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:visibility="invisible"
-                app:layout_constraintTop_toTopOf="@+id/home_img_cart"
-                app:layout_constraintEnd_toStartOf="@+id/home_img_cart"
-                android:contentDescription="@string/inform_for_user"
-                app:tint="@color/off_white" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
@@ -180,6 +166,7 @@
         android:layout_height="130dp"
         android:scrollbars="none"
         android:clipToPadding="false"
+        android:paddingHorizontal="36dp"
         android:orientation="horizontal"
         tools:itemCount="6"
         android:layout_marginTop="16dp"
@@ -200,9 +187,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_rv_cartitems"
         android:layout_width="match_parent"
+        android:clipToPadding="false"
+        android:paddingHorizontal="36dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/home_btn_changebags"
         tools:itemCount="3"
+        android:clickable="true"
+        android:focusable="true"
         android:layout_marginBottom="16dp"
         tools:listitem="@layout/rv_cartitems_item"
         app:layout_constraintTop_toBottomOf="@+id/home_txt_cartitems" />

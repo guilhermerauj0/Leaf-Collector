@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import leafenterprise.leafcollector.br.databinding.ProductsItemBinding
 import leafenterprise.leafcollector.br.domain.Product
-import leafenterprise.leafcollector.br.ui.ProductActivity
+import leafenterprise.leafcollector.br.ui.product.ProductActivity
 
 class ProductAdapter(
     var context: Context,

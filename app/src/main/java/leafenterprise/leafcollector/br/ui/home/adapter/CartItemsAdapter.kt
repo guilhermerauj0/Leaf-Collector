@@ -19,13 +19,18 @@ class CartItemsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.tvitemProductname.text = listCart[position].name
-        holder.binding.tvitemPrice.text = listCart[position].price.toString()
+        holder.binding.cartitemPrice.text = listCart[position].price.toString()
         holder.binding.tvitemQuantity.text = listCart[position].quantity.toString()
+
+        holder.binding.imgitemRemovefromcart.setOnClickListener {
+            listCart.removeAt(position)
+        }
     }
 
     override fun getItemCount(): Int {
         return listCart.size
     }
-    inner class ViewHolder(val binding: RvCartitemsItemBinding) : RecyclerView.ViewHolder(binding.root)
 
+    inner class ViewHolder(val binding: RvCartitemsItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }

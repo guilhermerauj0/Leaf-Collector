@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingHorizontal="36dp"
     android:paddingVertical="8dp">
 
     <com.google.android.material.divider.MaterialDivider
@@ -12,14 +11,15 @@
         android:layout_height="wrap_content"
         app:dividerColor="@color/gray"
         app:dividerThickness="2dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvitem_imgproduct"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_marginTop="10dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,70 +38,101 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="4dp"
         android:maxLines="1"
         android:text="@string/shops"
         android:textColor="@color/green_secundary"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cvitem_imgproduct"
         app:layout_constraintTop_toTopOf="@+id/cvitem_imgproduct" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_remove"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/offgray"
+        app:layout_constraintStart_toStartOf="@+id/tvitem_productname"
+        app:layout_constraintTop_toBottomOf="@+id/tvitem_productname">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="1dp"
+            android:src="@drawable/ic_remove"
+            app:tint="@color/green_secundary" />
+    </androidx.cardview.widget.CardView>
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvitem_quantity"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:maxLines="1"
-        android:text="@string/unit"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/cvitem_imgproduct"
-        app:layout_constraintTop_toBottomOf="@+id/tvitem_productname" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvitem_circle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:maxLines="1"
-        android:text="@string/circle_text"
-        android:textSize="12sp"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:text="@string/_1"
+        android:textColor="@color/green_secundary"
+        android:textSize="14sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/cv_remove"
+        app:layout_constraintStart_toEndOf="@+id/cv_remove"
+        app:layout_constraintTop_toTopOf="@+id/cv_remove" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_add"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@color/offgray"
         app:layout_constraintStart_toEndOf="@+id/tvitem_quantity"
-        app:layout_constraintTop_toTopOf="@+id/tvitem_quantity" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvitem_quantity"
+        app:layout_constraintTop_toTopOf="@+id/tvitem_quantity">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvitem_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:maxLines="1"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/tvitem_circle"
-        app:layout_constraintTop_toTopOf="@+id/tvitem_circle"
-        tools:text="800" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:maxLines="1"
-        android:text="@string/leaf_coin"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/tvitem_price"
-        app:layout_constraintTop_toTopOf="@+id/tvitem_price" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="1dp"
+            android:src="@drawable/ic_add"
+            app:tint="@color/green_secundary" />
+    </androidx.cardview.widget.CardView>
 
     <ImageView
         android:id="@+id/imgitem_removefromcart"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="10dp"
+        android:focusable="true"
+        android:clickable="true"
         android:contentDescription="@string/remove_item_from_cart"
         android:src="@drawable/ic_remove_shopping_cart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/green_primary" />
+
+    <ImageView
+        android:id="@+id/cartitem_img_leaf"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:contentDescription="@string/proof"
+        android:src="@drawable/ic_leaf"
+        app:layout_constraintEnd_toStartOf="@+id/cartitem_price"
+        app:layout_constraintTop_toTopOf="@+id/cartitem_price"
+        app:tint="@color/gray" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/cartitem_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/green_secundary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imgitem_removefromcart"
+        app:layout_constraintTop_toBottomOf="@+id/imgitem_removefromcart"
+        tools:text="80" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
