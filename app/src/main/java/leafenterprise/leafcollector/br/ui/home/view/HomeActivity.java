@@ -49,8 +49,6 @@ public class HomeActivity extends AppCompatActivity {
 
         binding.homeBtnChangebags.setOnClickListener(view -> readQrCode());
 
-        binding.homeImgInfo.setOnClickListener(view -> inform());
-
         binding.homeImgCart.setOnClickListener(view -> openCart());
 
         binding.homeImgUser.setOnClickListener(view -> openUser());
@@ -70,23 +68,6 @@ public class HomeActivity extends AppCompatActivity {
         createShops();
     }
 
-    private void setupCartList() {
-        listCart = new ArrayList<>();
-        cartItemsAdapter = new CartItemsAdapter(this, listCart);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        };
-        binding.homeRvCartitems.setLayoutManager(layoutManager);
-        binding.homeRvCartitems.setHasFixedSize(true);
-        binding.homeRvCartitems.setAdapter(cartItemsAdapter);
-
-        createItemsCart();
-
-    }
-
     private void createShops() {
         Shop shop1 = new Shop("Fulano Supermercado", "Alimentos");
         listShops.add(shop1);
@@ -104,6 +85,29 @@ public class HomeActivity extends AppCompatActivity {
         listShops.add(shop7);
     }
 
+    private void setupCartList() {
+        listCart = new ArrayList<>();
+        cartItemsAdapter = new CartItemsAdapter(this, listCart);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this) {
+            @Override
+            public boolean canScrollVertically() {
+                return true;
+            }
+        };
+        binding.homeRvCartitems.setLayoutManager(layoutManager);
+        binding.homeRvCartitems.setHasFixedSize(true);
+        binding.homeRvCartitems.setAdapter(cartItemsAdapter);
+        binding.homeRvCartitems.setOnClickListener(view -> {
+            finish();
+            overridePendingTransition(0, 0);
+            startActivity(getIntent());
+            overridePendingTransition(0, 0);
+            cartItemsAdapter.notifyDataSetChanged();
+        });
+        createItemsCart();
+
+    }
+
     private void createItemsCart() {
         Product product1 = new Product("iPhone X", "Smartphone", 1, 5679, "");
         listCart.add(product1);
@@ -116,10 +120,6 @@ public class HomeActivity extends AppCompatActivity {
     private void readQrCode() {
         Intent intent = new Intent(getApplicationContext(), QrCodeActivity.class);
         startActivity(intent);
-    }
-
-    private void inform() {
-        // TODO "Implementar Alert dialog"
     }
 
     private void openCart() {
