@@ -4,6 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="48dp"
     tools:context=".ui.cart.CartActivity">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/cart_txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/cart_items"
+        android:textColor="@color/green_secundary"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cart_rv_cartitems"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="50dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toTopOf="@+id/cart_btn_buy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cart_txt_title"
+        tools:listitem="@layout/rv_cartitems_item" />
+
+    <TextView
+        android:id="@+id/cart_txt_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/total"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/cart_rv_cartitems"
+        app:layout_constraintTop_toBottomOf="@+id/cart_rv_cartitems" />
+
+    <ImageView
+        android:id="@+id/cart_img_leaf"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:contentDescription="@string/proof"
+        android:src="@drawable/ic_leaf"
+        app:layout_constraintEnd_toStartOf="@+id/cart_total"
+        app:layout_constraintTop_toTopOf="@+id/cart_total"
+        app:tint="@color/gray" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/cart_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/green_secundary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/cart_rv_cartitems"
+        app:layout_constraintTop_toBottomOf="@+id/cart_rv_cartitems"
+        tools:text="80" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cart_btn_buy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/buy"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

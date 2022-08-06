@@ -19,7 +19,7 @@ class CartItemsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.tvitemProductname.text = listCart[position].name
-        holder.binding.tvitemPrice.text = listCart[position].price.toString()
+        holder.binding.cartitemPrice.text = listCart[position].price.toString()
         holder.binding.tvitemQuantity.text = listCart[position].quantity.toString()
     }
 

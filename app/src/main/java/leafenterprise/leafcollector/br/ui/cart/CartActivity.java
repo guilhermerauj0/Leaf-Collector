@@ -4,13 +4,18 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import leafenterprise.leafcollector.br.R;
+import leafenterprise.leafcollector.br.databinding.ActivityCartBinding;
 
 public class CartActivity extends AppCompatActivity {
+
+    private ActivityCartBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
+        binding = ActivityCartBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+
     }
 }
