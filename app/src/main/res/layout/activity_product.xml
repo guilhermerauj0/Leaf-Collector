@@ -89,7 +89,7 @@
         android:id="@+id/product_btn_confirm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/confirm"
+        android:text="@string/buy"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

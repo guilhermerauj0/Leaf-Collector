@@ -35,9 +35,6 @@
             android:name=".ui.product.ProductActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.proofs.BuyProofActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.proofs.ChangeSuccessActivity"
             android:exported="false" />
         <activity
