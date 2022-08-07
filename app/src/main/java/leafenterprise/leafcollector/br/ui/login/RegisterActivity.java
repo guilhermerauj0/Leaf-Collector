@@ -57,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
         String password = binding.registerEdtPassword.getText().toString();
         String name = binding.registerEdtFirstname.getText().toString().trim();
         String lastName = binding.registerEdtLastname.getText().toString().trim();
-        Integer cpf = Integer.parseInt(binding.registerEdtCpf.getText().toString());
+        Integer cpf = Integer.parseInt(String.valueOf(binding.registerEdtCpf.getText()));
         Integer phone = Integer.parseInt(String.valueOf(binding.registerEdtPhone.getText()));
 
         if (TextUtils.isEmpty(email)) {
@@ -85,16 +85,13 @@ public class RegisterActivity extends AppCompatActivity {
                             // ADD USER TO DATABASE
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(mAuth.getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Toast.makeText(RegisterActivity.this, "Usuário criado",
-                                                        Toast.LENGTH_SHORT).show();
-                                            } else {
-                                                Toast.makeText(RegisterActivity.this, "Erro ao criar usuário",
-                                                        Toast.LENGTH_SHORT).show();
-                                            }
+                                    .setValue(user).addOnCompleteListener(task1 -> {
+                                        if (task1.isSuccessful()) {
+                                            Toast.makeText(RegisterActivity.this, "Usuário criado",
+                                                    Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(RegisterActivity.this, "Erro ao criar usuário",
+                                                    Toast.LENGTH_SHORT).show();
                                         }
                                     });
 
